@@ -1,0 +1,16 @@
+private void button3_Click(object sender, EventArgs e)
+{
+    System.Diagnostics.Process process = new System.Diagnostics.Process();
+    process.StartInfo.WorkingDirectory = "c:\\";
+    process.StartInfo.UseShellExecute = false;
+    process.StartInfo.FileName = "cmd.exe";
+    process.StartInfo.Arguments = "/c dir";
+    process.StartInfo.CreateNoWindow = true;
+    process.StartInfo.RedirectStandardInput = true;
+    process.StartInfo.RedirectStandardOutput = true;
+    process.StartInfo.RedirectStandardError = true;
+    process.Start();
+    string output = process.StandardOutput.ReadToEnd();
+    process.Close();
+    richTextBox1.Text = output;
+}
